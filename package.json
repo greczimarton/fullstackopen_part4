@@ -1,0 +1,53 @@
+{
+  "name": "fullstackopen_part4",
+  "version": "1.0.0",
+  "description": "bloglist",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "build:ui": "rm -rf build && cd ../Notes-frontend/ && npm run build --prod && cp -r build ../notes-backend",
+    "deploy": "git push heroku main",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
+    "logs:prod": "heroku logs --tail",
+    "lint": "eslint .",
+    "test": "cross-env NODE_ENV=test jest --verbose -runInBand",
+    "start:test": "cross-env NODE_ENV=test node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greczimarton/fullstackopen_part4.git"
+  },
+  "keywords": [
+    "bloglist",
+    "fullstackopen_part4"
+  ],
+  "author": "greczimarton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/greczimarton/fullstackopen_part4/issues"
+  },
+  "homepage": "https://github.com/greczimarton/fullstackopen_part4#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.32.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "jest": "^27.0.6",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^5.13.7",
+    "mongoose-unique-validator": "^2.0.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.6"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
